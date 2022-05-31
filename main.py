@@ -1,27 +1,28 @@
-basic.show_leds("""
-    . # # # .
-        # . . . #
-        # . . . #
-        # . . . #
-        . # # # .
-""")
-
 def on_forever():
     basic.show_leds("""
-        . # # # .
-                # . . . #
+        # . . . #
+                . # # # .
                 # . . . #
                 # . . . #
                 . # # # .
     """)
-    if input.light_level() > 127:
+    if input.light_level() < 3 or input.logo_is_pressed():
+        music.set_volume(99)
         music.play_tone(262, music.beat(BeatFraction.SIXTEENTH))
         basic.show_leds("""
-            . . . . #
-                        . . . # .
-                        . . # . .
-                        . # . . .
-                        # . . . .
+            . # . # .
+                        . # . # .
+                        . # . # .
+                        . # . # .
+                        . # . # .
+        """)
+        basic.pause(100)
+        basic.show_leds("""
+            # . . . #
+                        # . . . #
+                        # . . . #
+                        # . . . #
+                        # . . . #
         """)
         servos.P1.set_angle(0)
         servos.P0.set_angle(0)
