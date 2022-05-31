@@ -6,7 +6,7 @@ basic.forever(function () {
         # . . . #
         . # # # .
         `)
-    if (input.lightLevel() < 3 || input.logoIsPressed()) {
+    if (input.lightLevel() < 3 || (input.logoIsPressed() || input.soundLevel() > 20)) {
         music.setVolume(99)
         music.playTone(262, music.beat(BeatFraction.Sixteenth))
         basic.showLeds(`
