@@ -1,3 +1,6 @@
+control.onEvent(EventBusSource.MICROBIT_ID_BUTTON_A, EventBusValue.MES_DPAD_BUTTON_A_DOWN, function () {
+    servos.P0.setAngle(0)
+})
 basic.forever(function () {
     basic.showLeds(`
         # . . . #
@@ -29,4 +32,10 @@ basic.forever(function () {
         servos.P0.setAngle(0)
         basic.pause(200)
     }
+})
+control.inBackground(function () {
+    control.raiseEvent(
+    EventBusSource.MICROBIT_ID_BUTTON_A,
+    EventBusValue.MES_DPAD_BUTTON_A_DOWN
+    )
 })
